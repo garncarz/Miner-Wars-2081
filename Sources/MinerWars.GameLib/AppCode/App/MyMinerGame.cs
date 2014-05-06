@@ -224,9 +224,10 @@ namespace MinerWars.AppCode.App
               //  Content = new SharpDX.Toolkit.Content.ContentManager(Services);
 
                 RootDirectory = Path.Combine(GameDir, "Content");
-                RootDirectoryDebug =  Path.GetFullPath(System.IO.Path.Combine(GameDir, "..\\..\\..\\Content"));
+                RootDirectoryDebug = RootDirectory; // Path.GetFullPath(System.IO.Path.Combine(GameDir, "..\\..\\..\\Content"));
 
-                RootDirectoryEffects = RootDirectory;
+                // RootDirectoryEffects = RootDirectory;
+                RootDirectoryEffects = Environment.ExpandEnvironmentVariables("%UserProfile%\\Documents\\GitHub\\Miner-Wars-2081\\Effects");
 
                 Static = this;
 

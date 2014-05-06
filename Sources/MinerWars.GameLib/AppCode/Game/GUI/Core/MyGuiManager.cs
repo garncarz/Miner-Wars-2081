@@ -1765,7 +1765,7 @@ m_spriteBatch.Draw(texture, SharpDXHelper.ToSharpDX(dest), SharpDXHelper.ToSharp
                     //Reload shaders
                     if (m_input.IsNewKeyPress(Keys.F2) && m_input.IsKeyPress(Keys.LeftShift))
                     {
-                        MyMinerGame.Static.RootDirectoryEffects = MyMinerGame.Static.RootDirectoryDebug;
+                        //MyMinerGame.Static.RootDirectoryEffects = MyMinerGame.Static.RootDirectoryDebug;
                         MyRender.LoadEffects();
                         //m_spriteBatchOwn = new MyGuiSpriteBatchOwn(); // Reload shader in sprite batch
                         //MyTextureManager.ReloadTextures();

@@ -42,7 +42,7 @@ namespace MinerWars.AppCode.Game.Effects
         protected MyEffectBase(string asset)
         {
             string curdir = System.IO.Directory.GetCurrentDirectory();
-            System.IO.Directory.SetCurrentDirectory(System.IO.Path.GetDirectoryName(MyMinerGame.Static.RootDirectoryEffects + "\\" + asset));
+            System.IO.Directory.SetCurrentDirectory(System.IO.Path.GetDirectoryName(MyMinerGame.Static.RootDirectoryEffects + "\\" + asset.Replace("Effects2\\", "")));
 
             string sourceFX = Path.GetFileName(asset + ".fx");
             string compiledFX = Path.GetFileName(asset + ".fxo");

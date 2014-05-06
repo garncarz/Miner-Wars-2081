@@ -1,2 +1,4 @@
 Sources/*/bin/*
 Sources/*/obj/*
+*.fxo
+*.suo
