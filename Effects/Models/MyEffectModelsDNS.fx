@@ -36,6 +36,15 @@ sampler TextureDiffuseSampler = sampler_state
 	AddressV = WRAP;
 };
 
+Texture TextureHeight;
+sampler TextureHeightSampler = sampler_state 
+{ 
+	texture = <TextureHeight> ; 
+	mipfilter = LINEAR; 
+	AddressU = WRAP; 
+	AddressV = WRAP;
+};
+
 Texture TextureNormal;
 sampler TextureNormalSampler = sampler_state 
 { 

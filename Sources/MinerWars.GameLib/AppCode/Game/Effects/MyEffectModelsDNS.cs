@@ -52,6 +52,7 @@ namespace MinerWars.AppCode.Game.Effects
         readonly EffectHandle m_worldMatrix;
         readonly EffectHandle m_projectionMatrix;
         readonly EffectHandle m_textureDiffuse;
+        readonly EffectHandle m_textureHeight;
         readonly EffectHandle m_textureNormal;
         readonly EffectHandle m_emissivity;
         readonly EffectHandle m_emissivityOffset;
@@ -75,6 +76,7 @@ namespace MinerWars.AppCode.Game.Effects
         public MyEffectReflectorBase Reflector { get; private set; }
 
         bool m_diffuseTextureSet = false;
+        bool m_heightTextureSet = false;
         bool m_normalTextureSet = false;
         bool m_specularTextureSet = false;
 
@@ -136,6 +138,7 @@ namespace MinerWars.AppCode.Game.Effects
             m_projectionMatrix = m_D3DEffect.GetParameter(null, "ProjectionMatrix");
 
             m_textureDiffuse = m_D3DEffect.GetParameter(null, "TextureDiffuse");
+            m_textureHeight = m_D3DEffect.GetParameter(null, "TextureHeight");
             m_textureNormal = m_D3DEffect.GetParameter(null, "TextureNormal");
             m_diffuseColor = m_D3DEffect.GetParameter(null, "DiffuseColor");
             m_emissivity = m_D3DEffect.GetParameter(null, "Emissivity");
@@ -211,6 +214,12 @@ namespace MinerWars.AppCode.Game.Effects
             m_diffuseTextureSet = texture2D != null;
         }
 
+        public override void SetTextureHeight(Texture texture2D)
+        {
+            m_D3DEffect.SetTexture(m_textureHeight, texture2D);
+            m_heightTextureSet = texture2D != null;
+        }
+
         public override void SetTextureNormal(Texture texture2D)
         {
             m_D3DEffect.SetTexture(m_textureNormal, texture2D);
@@ -220,6 +229,11 @@ namespace MinerWars.AppCode.Game.Effects
         public override bool IsTextureDiffuseSet()
         {
             return m_diffuseTextureSet;
+        }
+
+        public override bool IsTextureHeightSet()
+        {
+            return m_heightTextureSet;
         }
 
         public override bool IsTextureSpecularSet()
