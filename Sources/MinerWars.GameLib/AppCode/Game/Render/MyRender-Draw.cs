@@ -1321,6 +1321,10 @@ namespace MinerWars.AppCode.Game.Render
             {
                 m_debugTexture = MyTextureManager.GetTexture<MyTexture2D>("Textures2\\Models\\Debug\\debug_d");
             }
+            if (m_debugTexture_Bricks == null)
+            {
+                m_debugTexture_Bricks = MyTextureManager.GetTexture<MyTexture2D>("bricks");
+            }
             if (m_debugNormalTexture == null)
             {
                 m_debugNormalTexture = MyTextureManager.GetTexture<MyTexture2D>("Textures2\\Models\\fake_ns");

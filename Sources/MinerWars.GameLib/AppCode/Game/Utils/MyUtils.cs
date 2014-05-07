@@ -1784,6 +1784,7 @@ namespace MinerWars.AppCode.Game.Utils
                     case Format.D24S8:
                     case Format.A2R10G10B10:
                     case Format.Q8W8V8U8:
+                    case Format.X8R8G8B8:
                         sizeOfOneLevel = width * height * 4;
                         break;
 

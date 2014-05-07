@@ -208,7 +208,8 @@ namespace MinerWars.AppCode.Game.Render
                     {
                         if (material != null)
                         {
-                            shader.SetTextureDiffuse(material.DiffuseTexture);
+                            //shader.SetTextureDiffuse(material.DiffuseTexture);
+                            shader.SetTextureDiffuse(m_debugTexture_Bricks);
                             shader.SetTextureNormal(material.NormalTexture);
 
                             //Do we need this? Graphicians dont use this

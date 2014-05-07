@@ -641,6 +641,7 @@ namespace MinerWars.AppCode.Game.Render
 
         //Texture for debug rendering
         static MyTexture2D m_debugTexture;
+        static MyTexture2D m_debugTexture_Bricks;
         static MyTexture2D m_debugNormalTexture;
         static MyTexture2D m_debugNormalTextureBump;
         //static RenderTarget2D m_screenshot;
