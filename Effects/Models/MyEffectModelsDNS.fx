@@ -374,6 +374,7 @@ MyGbufferPixelShaderOutput PixelShaderFunctionLow_DNS_Instanced(VertexShaderOutp
 MyGbufferPixelShaderOutput PixelShaderFunction_DNS_Base(VertexShaderOutput_DNS input, float3 diffuse, float3 si_sp_e, float3 highlight)
 {
 	float height = tex2D(TextureHeightSampler, input.BaseOutput.TexCoordAndViewDistance.xy).r;
+	height = height * 0.04f - 0.02f;
 	input.BaseOutput.TexCoordAndViewDistance.xy += height * normalize(input.ViewDir).xy;
 
 	float4 diffuseTexture = tex2D(TextureDiffuseSampler, input.BaseOutput.TexCoordAndViewDistance.xy);
