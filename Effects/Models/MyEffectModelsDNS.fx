@@ -157,6 +157,7 @@ struct VertexShaderOutput_DNS
 {
     VertexShaderOutputLow_DNS BaseOutput;
     float3x3 TangentToWorld : TEXCOORD5;
+    float3 ViewDir : TEXCOORD4;
 };
 
 struct VertexShaderOutput_DNS_Instanced
@@ -253,6 +254,12 @@ VertexShaderOutput_DNS VertexShaderFunction_DNS_Base(VertexShaderInput_DNS input
     output.TangentToWorld[0] = mul(input.Tangent, (float3x3)world);
     output.TangentToWorld[1] = mul(input.Binormal, (float3x3)world);
     output.TangentToWorld[2] = output.BaseOutput.Normal;
+	
+	float3x3 tbnMatrix;
+	tbnMatrix[0] = input.Tangent;
+	tbnMatrix[1] = input.Binormal;
+	tbnMatrix[2] = input.BaseInput.Normal;
+	output.ViewDir = mul(CameraPosition - input.BaseInput.Position, tbnMatrix);
 
     return output;
 }
@@ -366,6 +373,9 @@ MyGbufferPixelShaderOutput PixelShaderFunctionLow_DNS_Instanced(VertexShaderOutp
 
 MyGbufferPixelShaderOutput PixelShaderFunction_DNS_Base(VertexShaderOutput_DNS input, float3 diffuse, float3 si_sp_e, float3 highlight)
 {
+	float height = tex2D(TextureHeightSampler, input.BaseOutput.TexCoordAndViewDistance.xy).r;
+	input.BaseOutput.TexCoordAndViewDistance.xy += height * normalize(input.ViewDir).xy;
+
 	float4 diffuseTexture = tex2D(TextureDiffuseSampler, input.BaseOutput.TexCoordAndViewDistance.xy);
 
 	input.TangentToWorld[0] = normalize(input.TangentToWorld[0]);
