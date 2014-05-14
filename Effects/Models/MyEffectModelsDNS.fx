@@ -259,7 +259,7 @@ VertexShaderOutput_DNS VertexShaderFunction_DNS_Base(VertexShaderInput_DNS input
 	tbnMatrix[0] = input.Tangent;
 	tbnMatrix[1] = input.Binormal;
 	tbnMatrix[2] = input.BaseInput.Normal;
-	output.ViewDir = mul(CameraPosition - input.BaseInput.Position, tbnMatrix);
+	output.ViewDir = mul(CameraPosition - output.BaseOutput.Position, output.TangentToWorld);
 
     return output;
 }
